@@ -30,3 +30,18 @@ def append_to_file(path, data):
 def delete_file_contents(path):
     with open(path, 'w'):
         pass #do nothing
+
+#Convert each line of a file to a set item
+def file_to_set(file_name):
+    results = set()
+    with open(file_name, 'rt') as f:
+        for line in f:
+            results.add(line.replace('\n', ''))
+    return results
+
+#Save each set item to a new line in a file
+def set_to_file(links, file):
+    delete_file_contents(file)
+    for link in sorted(links):
+        append_to_file(file, link)
+
